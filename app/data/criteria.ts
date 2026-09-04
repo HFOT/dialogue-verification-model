@@ -7,6 +7,14 @@ export const CRITERIA: { id: CriterionId; label: string }[] = [
   { id: 'routes', label: '情報経路が複数あるか' },
 ];
 
+/** スマホの簡易表示用。1〜2文字に切り詰めた基準名。 */
+export const CRITERION_TINY: Record<CriterionId, string> = {
+  evidence: '根拠',
+  content: '内容',
+  compare: '異論',
+  routes: '経路',
+};
+
 export const STATE_MARK: Record<CriterionState, string> = { unmet: '—', partial: '◐', met: '○' };
 export const STATE_LABEL: Record<CriterionState, string> = { unmet: '未充足', partial: '部分', met: '充足' };
 
@@ -41,14 +49,18 @@ export function criteriaStateOf(messages: Message[]): Record<CriterionId, Criter
     compare: 'unmet',
     routes: 'unmet',
   };
+  // 初期値の 'unmet' は「まだ何も観察していない」であって確定ではないため、
+  // 確定したかどうかは別に持つ。
+  const settled: Partial<Record<CriterionId, boolean>> = {};
   for (const message of messages) {
     for (const shift of shiftsFor(message)) {
-      // 一度 met / unmet まで振れた基準を、後続の partial では戻さない。
-      // 検証モードで、選択の効果が直後の共通会話の寄与に上書きされるのを防ぐ。
-      if (shift.state === 'partial' && state[shift.id] !== 'unmet' && state[shift.id] !== 'met') {
+      if (shift.state === 'partial') {
+        // 一度 met / unmet まで振れた基準を、後続の partial では戻さない。
+        // 検証モードで、選択の効果が直後の共通会話の寄与に打ち消されるのを防ぐ。
+        if (!settled[shift.id]) state[shift.id] = shift.state;
+      } else {
         state[shift.id] = shift.state;
-      } else if (shift.state !== 'partial') {
-        state[shift.id] = shift.state;
+        settled[shift.id] = true;
       }
     }
   }
