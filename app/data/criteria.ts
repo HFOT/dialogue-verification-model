@@ -66,3 +66,49 @@ export function criteriaStateOf(messages: Message[]): Record<CriterionId, Criter
   }
   return state;
 }
+
+/** その寄与が場に何をするか。抽象的な基準名を、具体的な影響の文に落とす。 */
+export const CRITERION_EFFECT: Record<CriterionId, Record<CriterionState, string>> = {
+  evidence: {
+    unmet: '根拠が示されないまま結論だけが残ります。後から確かめ直せなくなります。',
+    partial: '確かめる材料は出ていますが、まだ確認の動きにはつながっていません。',
+    met: '根拠と、それに反する材料の両方が場に出ています。判断は各自に残ります。',
+  },
+  content: {
+    unmet: '発言の中身より、誰が言ったかで扱いが決まります。',
+    partial: '反応の偏りは出ていますが、まだ誰も問題として扱っていません。',
+    met: '反応の多さと内容の確かさが、別のものとして扱われています。',
+  },
+  compare: {
+    unmet: '異論が同じ場に残らず、並べて比べられなくなります。',
+    partial: '異論は出ていますが、受け止められないまま宙に浮いています。',
+    met: '異論が同じ場に残り、両方の言い分を並べて見られます。',
+  },
+  routes: {
+    unmet: '情報の入口が一本に寄り、そこを通らないと届かなくなります。',
+    partial: '入口が一つ増えましたが、他の経路があるかはまだ分かりません。',
+    met: 'まとめと元の資料の両方が残り、経路が複数のまま保たれます。',
+  },
+};
+
+export type CriterionTally = { observed: number; converge: number; distribute: number; pending: number };
+
+/** この会話で、各基準に何回・どちら向きの働きかけがあったか。 */
+export function tallyOf(messages: Message[]): Record<CriterionId, CriterionTally> {
+  const tally = {
+    evidence: { observed: 0, converge: 0, distribute: 0, pending: 0 },
+    content: { observed: 0, converge: 0, distribute: 0, pending: 0 },
+    compare: { observed: 0, converge: 0, distribute: 0, pending: 0 },
+    routes: { observed: 0, converge: 0, distribute: 0, pending: 0 },
+  } as Record<CriterionId, CriterionTally>;
+  for (const message of messages) {
+    for (const shift of shiftsFor(message)) {
+      const row = tally[shift.id];
+      row.observed += 1;
+      if (shift.state === 'unmet') row.converge += 1;
+      else if (shift.state === 'met') row.distribute += 1;
+      else row.pending += 1;
+    }
+  }
+  return tally;
+}

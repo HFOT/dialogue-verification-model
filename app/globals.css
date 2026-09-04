@@ -159,3 +159,15 @@
 
 /* POINT の横の簡易指標（この構造がこの会話で何回目か） */
 .point-metric{display:inline-flex;align-items:center;vertical-align:1px;margin-left:5px;border:1px solid var(--line);border-radius:999px;background:rgba(29,47,37,.05);padding:2px 7px;color:#6c7078;font-size:9px;font-weight:650;letter-spacing:.03em;white-space:nowrap}
+
+/* この発言が何に効き、どう影響するか */
+.point-effect{margin:9px 0 0;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.7);padding:10px 11px}
+.point-effect-head{display:flex;align-items:center;gap:7px;margin-bottom:6px;color:#3d4449;font-size:11px}
+.point-effect-head>span:nth-child(2){flex:1;min-width:0;line-height:1.4}
+.point-effect-head b{flex:0 0 auto;color:#6c7078;font-size:10px;font-weight:700}
+.crit-tag{flex:0 0 auto;border:1px solid var(--line);border-radius:999px;padding:2px 8px;font-size:10px;font-weight:700;color:#6c7078}
+.crit-tag.partial{border-color:rgba(187,125,19,.4);background:rgba(255,248,232,.85);color:var(--amber)}
+.crit-tag.unmet{border-color:rgba(120,128,134,.34);background:rgba(240,241,242,.85);color:#6c7078}
+.crit-tag.met{border-color:rgba(13,123,85,.4);background:rgba(233,245,232,.85);color:var(--green)}
+.point-effect-body{margin:0;color:#2f3a34;font-size:12px;line-height:1.75}
+.criteria-live .crit em b{margin-left:6px;padding:1px 6px;border-radius:999px;background:rgba(29,47,37,.07);color:#5b6167;font-size:9px;font-weight:700}
