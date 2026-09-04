@@ -66,8 +66,8 @@ const observerNotes=['内容の価値と、場で得られる反応量は一致�
 
 const MODES: { id: Mode; label: string; hint: string }[] = [
   { id: 'ambiguous', label: '中間型', hint: '中心人物がいない場' },
-  { id: 'pressure', label: '圧力側', hint: '経路が集約した場合' },
-  { id: 'open', label: '非圧力側', hint: '経路が分散した場合' },
+  { id: 'pressure', label: '圧力側', hint: '入り口がひとつに寄った場合' },
+  { id: 'open', label: '非圧力側', hint: '入り口が複数のまま残った場合' },
   { id: 'verify', label: '検証モード', hint: '自分の応答で試す' },
 ];
 

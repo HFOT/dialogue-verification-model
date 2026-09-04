@@ -16,7 +16,7 @@ export const ANSWERS: { id: Answer; label: string }[] = [
   { id: 'unknown', label: 'わからない' },
 ];
 
-/** converge = 経路が集約していく側の兆候 / distribute = 分散したままである側の兆候 */
+/** converge = 入り口がひとつに寄っていく側の兆候 / distribute = 複数のまま保たれる側の兆候 */
 export type Polarity = 'converge' | 'distribute';
 
 export type SelfQuestion = { id: string; criterion: CriterionId; polarity: Polarity; scene: string };
@@ -33,10 +33,10 @@ export const SELF_QUESTIONS: SelfQuestion[] = [
 ];
 
 export const CRITERION_SHORT: Record<CriterionId, string> = {
-  evidence: '根拠と反証',
-  content: '内容による評価',
-  compare: '異論の比較可能性',
-  routes: '情報経路の複数性',
+  evidence: 'もとの資料',
+  content: '中身の扱い',
+  compare: '反対意見の扱い',
+  routes: '情報の入り口',
 };
 
 export type SelfState = 'met' | 'partial' | 'unmet' | 'unknown';
@@ -93,16 +93,16 @@ export function selfResult(reading: Record<CriterionId, SelfReading>): SelfResul
   }
   if (unmet.length >= 2) {
     return {
-      headline: 'あなたには、経路が集約した場に見えています',
-      body: '情報の入口や異論の扱いが一方向に寄って見えている状態です。ただしこれは場の性質そのものではなく、あなたの位置から見えている像です。同じ場でも、別の人からは違って見える可能性があります。',
+      headline: 'あなたには、情報の入り口がひとつに寄った場に見えています',
+      body: '情報の入り口や反対意見の扱いが、一方向に寄って見えている状態です。ただしこれは場の性質そのものではなく、あなたの位置から見えている像です。同じ場でも、別の人からは違って見える可能性があります。',
       focus,
       unseen,
     };
   }
   if (met.length >= 3 && unmet.length === 0) {
     return {
-      headline: 'あなたには、経路が分散した場に見えています',
-      body: '根拠が開かれた形で共有され、異論が同じ場に残り、確かめる経路が複数ある状態に見えています。ここで確かめる価値があるのは、それがどの範囲まで成り立っているかです。見えていない場所には別の構造があるかもしれません。',
+      headline: 'あなたには、確かめる道が複数ある場に見えています',
+      body: 'もとの資料が開かれた形で共有され、反対意見が同じ場に残り、確かめる道が複数ある状態に見えています。ここで確かめる価値があるのは、それがどの範囲まで成り立っているかです。見えていない場所には別の構造があるかもしれません。',
       focus,
       unseen,
     };
