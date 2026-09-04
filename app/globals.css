@@ -238,14 +238,16 @@
 }
 
 /* スタート画面：ヒーローを1画面目にして、START で会話画面へ */
-.hero-start{display:inline-flex;align-items:center;gap:9px;margin-top:26px;border:1px solid var(--green);border-radius:999px;background:var(--green);padding:13px 26px;color:#fff;font-size:13px;font-weight:700;letter-spacing:.14em;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}
+.hero-cta-row{margin-top:26px}
+.hero-start{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--green);border-radius:999px;background:var(--green);padding:13px 26px;color:#fff;font-size:13px;font-weight:700;letter-spacing:.14em;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}
 .hero-start:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(13,123,85,.24)}
 .hero-start i{font-style:normal;font-size:12px;opacity:.85}
 @media(min-width:801px){
   .site-shell .hero{min-height:calc(100vh - 62px);align-content:center;padding-top:0;padding-bottom:0}
 }
 @media(max-width:800px){
-  .hero-start{width:100%;justify-content:center;margin-top:22px}
+  .hero-cta-row{margin-top:22px}
+  .hero-start,.hero-paper{width:100%;justify-content:center}
 }
 
 /* START で会話ビューへ切り替え。1ページで完結させ、スクロールで移動しない */
@@ -281,7 +283,8 @@
   .site-shell .lead{max-width:560px;margin-top:22px;font-size:15px}
   .site-shell .hero-aside{align-self:center;padding-top:0;border-top:0}
   .site-shell .hero-aside>p{margin-top:0}
-  .site-shell .hero-start{margin-top:32px;padding:15px 32px;font-size:14px}
+  .site-shell .hero .hero-cta-row{margin-top:32px}
+  .site-shell .hero-start,.site-shell .hero-paper{padding:15px 32px;font-size:14px}
 }
 .hero-aside>p{border-top:1px solid var(--ink);padding-top:18px}
 @media(max-width:800px){
