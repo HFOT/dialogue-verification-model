@@ -184,3 +184,12 @@
 .criteria-live .crit em{flex:0 0 auto}
 .criteria-live .crit .crit-main b{flex:0 0 auto;margin-left:0;padding:1px 6px;border-radius:999px;background:rgba(29,47,37,.07);color:#5b6167;font-size:9px;font-weight:700}
 .crit-desc{grid-column:2;margin:0;color:#5b6167;font-size:11px;line-height:1.65}
+
+/* 発言の解剖：含まれる要素 / 与えうる影響 / 効いている基準 */
+.anatomy-row{display:grid;grid-template-columns:72px minmax(0,1fr);gap:9px;align-items:start;padding:7px 0;border-top:1px solid var(--line)}
+.anatomy-row:first-child{border-top:0;padding-top:0}
+.anatomy-key{color:var(--green);font-size:9px;font-weight:750;letter-spacing:.06em;line-height:1.7;padding-top:2px}
+.anatomy-tags{display:flex;flex-wrap:wrap;align-items:center;gap:5px}
+.anatomy-tags i{border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.9);padding:3px 9px;color:#3d4449;font-size:10px;font-style:normal;line-height:1.5}
+.anatomy-tags em{color:#6c7078;font-size:10px;font-style:normal}
+.anatomy-body{margin:0;color:#2f3a34;font-size:11px;line-height:1.75}
