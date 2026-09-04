@@ -48,3 +48,7 @@
 .criteria-live .partial i,.criteria-live .partial em{color:var(--amber)}
 .criteria-live .met{border-color:rgba(13,123,85,.32);background:rgba(233,245,232,.6)}
 .criteria-live .met i,.criteria-live .met em{color:var(--green)}
+
+.branch-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
+.branch-actions button{border:1px solid rgba(13,123,85,.4);border-radius:999px;background:#fff;padding:6px 12px;color:#0d5f42;font-size:11px;font-weight:650;cursor:pointer;transition:background .2s}
+.branch-actions button:hover{background:#e7f4e9}
