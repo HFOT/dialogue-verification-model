@@ -42,7 +42,15 @@ export function criteriaStateOf(messages: Message[]): Record<CriterionId, Criter
     routes: 'unmet',
   };
   for (const message of messages) {
-    for (const shift of shiftsFor(message)) state[shift.id] = shift.state;
+    for (const shift of shiftsFor(message)) {
+      // 一度 met / unmet まで振れた基準を、後続の partial では戻さない。
+      // 検証モードで、選択の効果が直後の共通会話の寄与に上書きされるのを防ぐ。
+      if (shift.state === 'partial' && state[shift.id] !== 'unmet' && state[shift.id] !== 'met') {
+        state[shift.id] = shift.state;
+      } else if (shift.state !== 'partial') {
+        state[shift.id] = shift.state;
+      }
+    }
   }
   return state;
 }

@@ -89,3 +89,8 @@
 .self-entry span{color:#46564d;font-size:12px;line-height:1.7}
 .self-entry small{width:100%;color:#728078;font-size:10px;line-height:1.6}
 @media(max-width:800px){.self-hero{padding:46px 18px 26px}.self-body{grid-template-columns:1fr;padding:0 18px 45px}.self-panel{position:static}.self-entry{padding:0 18px 40px}.nav-back{display:none}}
+
+/* 検証モードで選択肢・結果を出す時は、フィードを縮めて chat-window の overflow:hidden に飲まれないようにする。
+   .site-shell .chat-window.phone-chat 側の指定に負けないよう詳細度を合わせる。 */
+.site-shell .chat-window.phone-chat.has-verify .message-feed{height:410px}
+@media(max-width:800px){.site-shell .chat-window.phone-chat.has-verify .message-feed{height:360px}}
