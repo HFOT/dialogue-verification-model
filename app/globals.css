@@ -2,7 +2,7 @@
 .observer-panel .flow-focus{margin:17px 0 0;padding:13px 12px 12px;border:1px solid rgba(13,123,85,.16);border-left:3px solid var(--green);border-radius:12px;background:linear-gradient(145deg,rgba(229,245,231,.78),rgba(255,255,255,.72))}.flow-focus>span{display:block;margin-bottom:7px;color:var(--green);font-size:9px;font-weight:750;letter-spacing:.09em}.flow-focus>b{display:block;color:#1f3f30;font-size:13px;line-height:1.35}.flow-focus small{display:block;margin-top:5px;color:#6d7e74;font-size:10px}.flow-focus p{margin:8px 0;color:#46564d;font-size:11px;line-height:1.55}.flow-focus em{display:block;border-top:1px solid rgba(13,123,85,.13);padding-top:8px;color:#728078;font-size:9px;font-style:normal;line-height:1.45}.point[aria-pressed=true]{border-color:#9b6410;background:#f9df8d;color:#513c09;box-shadow:0 0 0 3px rgba(212,155,39,.17)}
 .validation-card{margin-top:13px;padding:10px 11px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);color:#657068}.validation-card b{display:block;margin-bottom:5px;color:#1f2d25;font-size:10px;letter-spacing:.08em}.validation-card span{display:block;font-size:10px;line-height:1.55}.validation-card small{display:block;margin-top:6px;color:#8a9095;font-size:9px;line-height:1.45}
 .site-shell .experience .chat-window.phone-chat{height:960px;min-height:960px;background-color:#e8f0eb;background-image:radial-gradient(circle at 18% 14%,rgba(255,255,255,.82) 0 2px,transparent 3px),radial-gradient(circle at 72% 24%,rgba(91,143,113,.18) 0 2px,transparent 3px),linear-gradient(135deg,rgba(255,255,255,.52),rgba(213,231,219,.56))}.site-shell .experience .message-feed.phone-feed{height:750px;background:linear-gradient(180deg,rgba(238,247,241,.48),rgba(240,246,243,.18))}.site-shell .message:nth-child(3n) .bubble{max-width:430px}.site-shell .message:nth-child(5n) .bubble{max-width:520px}
-.site-shell .hero{grid-template-columns:1.45fr .55fr;gap:42px;padding-top:46px;padding-bottom:34px}.site-shell .hero h1{font-size:clamp(38px,4vw,58px);letter-spacing:-.058em}.site-shell .experience{grid-template-columns:minmax(0,430px) 260px;justify-content:center;gap:24px;padding-top:8px}.site-shell .chat-window.phone-chat{width:min(100%,430px)}.site-shell .bubble{max-width:650px}@media(max-width:800px){.site-shell .hero{grid-template-columns:1fr;gap:28px;padding:42px 18px 28px}.site-shell .experience{grid-template-columns:1fr;padding:0 18px 45px}.site-shell .hero h1{font-size:40px}}
+.site-shell .hero{grid-template-columns:1.45fr .55fr;gap:42px;padding-top:46px;padding-bottom:34px}.site-shell .hero h1{font-size:clamp(38px,4vw,58px);letter-spacing:-.058em}.site-shell .experience{grid-template-columns:minmax(0,430px) 390px;justify-content:center;gap:24px;padding-top:8px}.site-shell .chat-window.phone-chat{width:min(100%,430px)}.site-shell .bubble{max-width:650px}@media(max-width:800px){.site-shell .hero{grid-template-columns:1fr;gap:28px;padding:42px 18px 28px}.site-shell .experience{grid-template-columns:1fr;padding:0 18px 45px}.site-shell .hero h1{font-size:40px}}
 .message.external{padding:9px;border-left:3px solid #5d83b5;border-radius:7px;background:rgba(229,239,253,.58)}.message.external .avatar{background:#dce9ff;color:#2a5f9e}.message.external .bubble{background:#f5f9ff}
 .message.empathy .avatar{background:#f5e6bf;color:#8a6418}.message.empathy .bubble{background:#fffaf0}.message.empathy .message-meta b{color:#765f2a}
 .fictional-partners{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:28px;color:#6d7478;font-size:10px}.fictional-partners>span{color:#0d7b55;font-weight:700;letter-spacing:.08em}.fictional-partners b{padding:5px 8px;border-radius:7px;background:rgba(21,23,26,.055);font-weight:500}
@@ -96,7 +96,8 @@
 @media(max-width:800px){.site-shell .chat-window.phone-chat.has-verify .message-feed{height:360px}}
 
 /* ── スマホ全画面チャット ───────────────────────────────── */
-.fs-toggle,.fs-back,.fs-open-cta{display:none}
+.fs-toggle,.fs-back,.fs-open-cta,.fs-modes,.fs-sheet{display:none}
+.chat-head .fs-note{display:none}
 @media(max-width:800px){
   /* タブは2段に折り返さず、横スクロールの1段にしてチャットを押し下げない */
   .mode-row{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
@@ -155,6 +156,7 @@
   @keyframes sheet-up{from{transform:translateY(14px);opacity:.6}to{transform:none;opacity:1}}
 
   /* 全画面では注意書きをヘッダー右端に小さく置き、大きなピン留めは出さない */
+  .chat-window.is-fullscreen .chat-head .fs-note{display:block}
   .fs-note{flex:0 0 auto;margin-left:auto;color:var(--muted);font-size:9px;line-height:1.45;text-align:right;white-space:nowrap}
   .chat-window.is-fullscreen .pinned{display:none}
 
@@ -193,3 +195,67 @@
 .anatomy-tags i{border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.9);padding:3px 9px;color:#3d4449;font-size:10px;font-style:normal;line-height:1.5}
 .anatomy-tags em{color:#6c7078;font-size:10px;font-style:normal}
 .anatomy-body{margin:0;color:#2f3a34;font-size:11px;line-height:1.75}
+
+/* PCの観察パネル：幅が足りず縦に伸びていたので、余白と行間を詰める */
+@media(min-width:801px){
+  .observer-panel{padding:20px}
+  .criteria-live{gap:5px}
+  .criteria-live .crit{padding:9px 10px}
+  .crit-desc{font-size:10.5px;line-height:1.6}
+  .observer-panel .risk-caption{font-size:10.5px;line-height:1.6}
+  .validation-card{margin-top:11px;padding:9px 10px}
+}
+@media(min-width:801px){
+  .observer-panel .observer-note{min-height:0;padding-top:12px}
+  .observer-panel .flow-focus{margin-top:13px;padding:11px 11px 10px}
+  .observer-panel .flow-focus p{margin:6px 0}
+  .criteria-live .crit{padding:8px 10px;row-gap:4px}
+  .crit-desc{font-size:10px;line-height:1.55}
+  .controls{margin:14px 0}
+}
+
+/* PC：1画面に収める。チャットは画面高に合わせ、パネルは同じ高さで内側スクロール */
+@media(min-width:801px){
+  .site-shell .experience .chat-window.phone-chat{height:min(900px,calc(100vh - 360px));min-height:460px;display:flex;flex-direction:column}
+  .site-shell .experience .chat-window.phone-chat .chat-head,
+  .site-shell .experience .chat-window.phone-chat .pinned,
+  .site-shell .experience .chat-window.phone-chat .composer{flex:0 0 auto}
+  .site-shell .experience .message-feed.phone-feed{flex:1 1 auto;height:auto;min-height:0;overflow-y:auto}
+  .observer-panel{max-height:min(900px,calc(100vh - 360px));overflow-y:auto}
+  .observer-panel .fs-point{margin-top:14px;border-top:1px solid var(--line);padding-top:13px}
+  .observer-panel .fs-point>b{display:block;color:#1f3f30;font-size:13px;line-height:1.4}
+  .observer-panel .fs-point>p{margin:9px 0 0;color:#4d565c;font-size:11px;line-height:1.7}
+  .observer-panel .fs-point>small{display:block;margin-top:9px;border-top:1px solid var(--line);padding-top:8px;color:#8a9095;font-size:9px;line-height:1.5}
+}
+@media(min-width:801px){
+  /* 1画面に収めるため、上の説明の縦を詰める */
+  .site-shell .hero{padding-top:34px;padding-bottom:24px;gap:44px}
+  .site-shell .hero h1{font-size:clamp(30px,3.1vw,44px)}
+  .site-shell .lead{margin-top:16px;font-size:14px;line-height:1.75}
+  .site-shell .hero-tags{margin-top:16px}
+  .site-shell .mode-tabs .mode-lead{margin-bottom:9px}
+  .site-shell .experience{padding-top:0}
+}
+
+/* スタート画面：ヒーローを1画面目にして、START で会話画面へ */
+.hero-start{display:inline-flex;align-items:center;gap:9px;margin-top:26px;border:1px solid var(--green);border-radius:999px;background:var(--green);padding:13px 26px;color:#fff;font-size:13px;font-weight:700;letter-spacing:.14em;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}
+.hero-start:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(13,123,85,.24)}
+.hero-start i{font-style:normal;font-size:12px;opacity:.85}
+@media(min-width:801px){
+  .site-shell .hero{min-height:calc(100vh - 62px);align-content:center;padding-top:0;padding-bottom:0}
+}
+@media(max-width:800px){
+  .hero-start{width:100%;justify-content:center;margin-top:22px}
+}
+
+/* START で会話ビューへ切り替え。1ページで完結させ、スクロールで移動しない */
+.exp-back{display:none}
+@media(min-width:801px){
+  .site-shell .experience.is-active{position:fixed;inset:0;z-index:60;max-width:none;height:100vh;margin:0;padding:12px 24px 14px;background:var(--paper);grid-template-rows:auto minmax(0,1fr);align-content:stretch;align-items:stretch;gap:12px 24px;overflow:hidden}
+  .site-shell .experience.is-active .mode-tabs{margin-bottom:2px}
+  .site-shell .experience.is-active .mode-lead{display:none}
+  .site-shell .experience.is-active .chat-window.phone-chat{height:100%;min-height:0}
+  .site-shell .experience.is-active .observer-panel{height:100%;max-height:none;position:static}
+  .experience.is-active .exp-back{display:inline-block;margin-bottom:8px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.8);padding:7px 14px;color:#3d4449;font-size:11px;cursor:pointer}
+  .experience.is-active .exp-back:hover{border-color:rgba(13,123,85,.4)}
+}
