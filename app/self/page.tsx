@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useMemo, useState } from 'react';
 
 import { CRITERIA, STATE_MARK } from '../data/criteria';
@@ -37,14 +38,14 @@ export default function SelfCheck() {
   return (
     <main className="site-shell">
       <nav className="topbar" aria-label="Dialogue Verification Model navigation">
-        <a className="brand" href="/" aria-label="Dialogue Verification Model home">
+        <Link className="brand" href="/" aria-label="Dialogue Verification Model home">
           <span className="brand-mark" />
           DIALOGUE VERIFICATION MODEL
-        </a>
+        </Link>
         <span className="nav-statement">Self observation</span>
-        <a className="nav-back" href="/">
+        <Link className="nav-back" href="/">
           ← 合成会話モデルに戻る
-        </a>
+        </Link>
       </nav>
 
       <section className="self-hero">
@@ -168,7 +169,7 @@ export default function SelfCheck() {
 
       <footer>
         <span>DIALOGUE VERIFICATION MODEL · Self observation</span>
-        <a href="/">合成会話モデルに戻る</a>
+        <Link href="/">合成会話モデルに戻る</Link>
       </footer>
     </main>
   );
