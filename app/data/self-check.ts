@@ -93,7 +93,7 @@ export function selfResult(reading: Record<CriterionId, SelfReading>): SelfResul
   }
   if (unmet.length >= 2) {
     return {
-      headline: 'あなたには、情報の入り口がひとつに寄った場に見えています',
+      headline: 'あなたには、中央集権型に見えています',
       body: '情報の入り口や反対意見の扱いが、一方向に寄って見えている状態です。ただしこれは場の性質そのものではなく、あなたの位置から見えている像です。同じ場でも、別の人からは違って見える可能性があります。',
       focus,
       unseen,
@@ -101,7 +101,7 @@ export function selfResult(reading: Record<CriterionId, SelfReading>): SelfResul
   }
   if (met.length >= 3 && unmet.length === 0) {
     return {
-      headline: 'あなたには、確かめる道が複数ある場に見えています',
+      headline: 'あなたには、分散型に見えています',
       body: 'もとの資料が開かれた形で共有され、反対意見が同じ場に残り、確かめる道が複数ある状態に見えています。ここで確かめる価値があるのは、それがどの範囲まで成り立っているかです。見えていない場所には別の構造があるかもしれません。',
       focus,
       unseen,
