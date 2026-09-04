@@ -96,7 +96,7 @@
 @media(max-width:800px){.site-shell .chat-window.phone-chat.has-verify .message-feed{height:360px}}
 
 /* ── スマホ全画面チャット ───────────────────────────────── */
-.fs-toggle,.fs-back{display:none}
+.fs-toggle,.fs-back,.fs-open-cta{display:none}
 @media(max-width:800px){
   /* タブは2段に折り返さず、横スクロールの1段にしてチャットを押し下げない */
   .mode-row{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
@@ -138,6 +138,12 @@
   .fs-point b{display:block;color:#1f3f30;font-size:12px;line-height:1.4}
   .fs-point p{margin:6px 0 0;color:#4d565c;font-size:11px;line-height:1.7}
   .fs-point small{display:block;margin-top:7px;color:#8a9095;font-size:9px;line-height:1.5}
+
+  /* 埋め込み表示は「一部だけ見せる」。読むのは全画面で。 */
+  .site-shell .experience .chat-window.phone-chat:not(.is-fullscreen){height:auto;min-height:0}
+  .site-shell .chat-window.phone-chat:not(.is-fullscreen) .message-feed{height:230px}
+  .chat-window:not(.is-fullscreen) .composer{display:none}
+  .fs-open-cta{display:block;width:calc(100% - 28px);margin:10px 14px 14px;border:1px solid var(--green);border-radius:12px;background:var(--green);padding:11px;color:#fff;font-size:12px;font-weight:650;cursor:pointer}
 
   body.chat-fullscreen{overflow:hidden}
 }
