@@ -8,7 +8,7 @@
 
 ## 起動
 
-プロジェクト直下 (`C:\Users\CORN\Documents\ChatGPT\Cardano`) で実行します。
+プロジェクト直下で実行します。
 
 ```powershell
 npm install

@@ -1,7 +1,7 @@
 # シナリオ分岐モデル 設計書
 
 - 日付: 2026-09-04
-- 対象: DIALOGUE VERIFICATION MODEL（`C:\Users\CORN\Documents\ChatGPT\Cardano`）
+- 対象: DIALOGUE VERIFICATION MODEL
 - 方針: 既存構造を壊さない完全追加型
 
 ---
