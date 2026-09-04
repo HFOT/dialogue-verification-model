@@ -315,3 +315,4 @@
 .basis-name{color:#174c38;font-size:13px;font-weight:650;line-height:1.5}
 .basis-list p{margin:0;color:#5b6167;font-size:11.5px;line-height:1.85}
 @media(max-width:800px){.basis-list li{grid-template-columns:1fr;gap:5px}}
+.theory-note a{color:var(--green);font-weight:650}
