@@ -154,6 +154,10 @@
   .fs-sheet-body .panel-kicker{margin-bottom:10px}
   @keyframes sheet-up{from{transform:translateY(14px);opacity:.6}to{transform:none;opacity:1}}
 
+  /* 全画面では注意書きをヘッダー右端に小さく置き、大きなピン留めは出さない */
+  .fs-note{flex:0 0 auto;margin-left:auto;color:var(--muted);font-size:9px;line-height:1.45;text-align:right;white-space:nowrap}
+  .chat-window.is-fullscreen .pinned{display:none}
+
   body.chat-fullscreen{overflow:hidden}
 }
 
