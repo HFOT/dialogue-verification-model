@@ -52,3 +52,40 @@
 .branch-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
 .branch-actions button{border:1px solid rgba(13,123,85,.4);border-radius:999px;background:#fff;padding:6px 12px;color:#0d5f42;font-size:11px;font-weight:650;cursor:pointer;transition:background .2s}
 .branch-actions button:hover{background:#e7f4e9}
+
+.nav-back{color:var(--green);font-size:11px;font-weight:650;letter-spacing:.04em;text-decoration:none}
+.nav-back:hover{text-decoration:underline}
+.self-hero{max-width:1240px;margin:auto;padding:72px 28px 34px}
+.self-hero h1{max-width:760px;margin:0;font-size:clamp(32px,4.4vw,58px);font-weight:600;line-height:1.12;letter-spacing:-.06em}
+.self-hero .lead{max-width:680px}
+.self-note{max-width:680px;margin:22px 0 0;padding:11px 13px;border-left:3px solid var(--green);border-radius:0 10px 10px 0;background:rgba(233,245,232,.6);color:#40544a;font-size:11px;line-height:1.75}
+.self-body{max-width:1240px;margin:auto;padding:0 28px 72px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:30px;align-items:start}
+.self-questions{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.self-questions li{border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.6);padding:15px 17px;transition:border-color .2s,background .2s}
+.self-questions li.is-answered{border-color:rgba(13,123,85,.3);background:rgba(255,255,255,.82)}
+.self-scene{display:flex;gap:11px;margin:0 0 11px;color:#2b3238;font-size:14px;line-height:1.7}
+.self-scene b{flex:0 0 auto;color:var(--green);font-size:11px;font-weight:750;letter-spacing:.06em;padding-top:4px}
+.self-answers{display:flex;flex-wrap:wrap;gap:7px;padding-left:29px}
+.self-answers button{border:1px solid var(--line);border-radius:999px;background:#fff;padding:7px 14px;color:#4b5359;font-size:12px;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+.self-answers button:hover{border-color:rgba(13,123,85,.4)}
+.self-answers button.is-picked{border-color:var(--green);background:#e7f4e9;color:#0d5f42;font-weight:650}
+.self-panel{position:sticky;top:24px;padding:23px;border-radius:22px;background:rgba(255,255,255,.62);border:1px solid rgba(18,23,26,.1);backdrop-filter:blur(20px)}
+.self-progress{margin:0 0 12px;color:var(--muted);font-size:11px;letter-spacing:.04em}
+.self-hint{margin:0 0 15px;color:#5e656c;font-size:11px;line-height:1.75}
+.self-submit{width:100%;border:1px solid var(--green);border-radius:12px;background:var(--green);padding:11px;color:#fff;font-size:12px;font-weight:650;cursor:pointer;transition:opacity .2s}
+.self-submit:disabled{border-color:var(--line);background:rgba(255,255,255,.7);color:#9aa0a6;cursor:not-allowed}
+.self-result{margin-bottom:14px;padding:13px;border:1px solid rgba(13,123,85,.28);border-radius:14px;background:rgba(233,245,232,.72)}
+.self-result b{display:block;color:#0d5f42;font-size:14px;font-weight:650;line-height:1.45}
+.self-result p{margin:8px 0 0;color:#3f5449;font-size:11px;line-height:1.8}
+.self-focus{margin-top:12px;border-top:1px solid var(--line);padding-top:11px}
+.self-focus b{display:block;margin-bottom:5px;color:var(--amber);font-size:10px;letter-spacing:.08em}
+.self-focus p{margin:0;color:#5b6167;font-size:11px;line-height:1.75}
+.self-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0 4px}
+.self-actions button{border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.7);padding:8px;color:#3d4449;font-size:11px;cursor:pointer}
+.self-entry{max-width:1240px;margin:auto;padding:0 28px 60px}
+.self-entry a{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;border:1px solid rgba(13,123,85,.3);border-radius:18px;background:rgba(233,245,232,.5);padding:19px 22px;text-decoration:none;transition:background .2s}
+.self-entry a:hover{background:rgba(233,245,232,.85)}
+.self-entry b{color:#0d5f42;font-size:16px;font-weight:650}
+.self-entry span{color:#46564d;font-size:12px;line-height:1.7}
+.self-entry small{width:100%;color:#728078;font-size:10px;line-height:1.6}
+@media(max-width:800px){.self-hero{padding:46px 18px 26px}.self-body{grid-template-columns:1fr;padding:0 18px 45px}.self-panel{position:static}.self-entry{padding:0 18px 40px}.nav-back{display:none}}
