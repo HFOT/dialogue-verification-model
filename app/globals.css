@@ -316,3 +316,9 @@
 .basis-list p{margin:0;color:#5b6167;font-size:11.5px;line-height:1.85}
 @media(max-width:800px){.basis-list li{grid-template-columns:1fr;gap:5px}}
 .theory-note a{color:var(--green);font-weight:650}
+
+/* ヒーローの趣旨説明 */
+.hero-purpose{max-width:560px;margin:16px 0 0;color:#5f676d;font-size:12.5px;line-height:2}
+.hero-purpose b{color:#1f2d25;font-weight:650}
+.lead b{color:#1f2d25;font-weight:650}
+@media(max-width:800px){.hero-purpose{font-size:12px;line-height:1.95}}
