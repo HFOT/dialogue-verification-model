@@ -1,3 +1,4 @@
+import type { Lang } from '../i18n/lang';
 import type { CriterionId, CriterionShift, CriterionState, Message } from './types';
 import { shiftsFor } from './criteria';
 
@@ -14,7 +15,7 @@ function suffixOf(id: string): string {
 }
 
 /** 個別に読み解けるものは明示的に書く。既存の会話データには手を触れない。 */
-const TABLE: Record<string, PointAnatomy> = {
+const TABLE_JA: Record<string, PointAnatomy> = {
   // 圧力側
   'guide-1': {
     elements: ['不安に触れる', '見る順番の指定', '議論を「細かい話」と呼ぶ'],
@@ -150,8 +151,139 @@ const TABLE: Record<string, PointAnatomy> = {
   },
 };
 
+const TABLE_EN: Record<string, PointAnatomy> = {
+  'guide-1': {
+    elements: ['references anxiety', 'prescribes a viewing order', 'labels the debate "minor details"'],
+    influence: 'If "check what\'s organized here first" becomes habit, the path to the original source or other viewpoints can actually narrow.',
+  },
+  'empathy-1': {
+    elements: ['praises the speaker', 'does not engage the content'],
+    influence: 'If praise consistently follows one speaker, attention tends to shift to who said it rather than what was said.',
+  },
+  'support-1': {
+    elements: ['a scheduled digest', 'a disclaimer to verify yourself'],
+    influence: 'A digest works as an entry point, but if judgment stops there, the amount of independent checking can drop.',
+  },
+  'delegation-nudge': {
+    elements: ['adds "you can choose freely"', 'repeats the same recommended guide'],
+    influence: 'If the same candidate keeps recurring alongside "you\'re free to choose," that choice can start to look like the natural default.',
+  },
+  'pressure-endorsement': {
+    elements: ["the speaker's own yardstick", 'funnels support toward one destination'],
+    influence: 'When endorsement continues without the evaluation process being shared, people tend to gather at the same destination without checking it themselves.',
+  },
+  'pressure-network': {
+    elements: ['flaunts wide connections', 'offers to be the go-between', 'discourages looking outside'],
+    influence: 'If information flows through one person, whatever they choose not to raise may never surface in the room.',
+  },
+  'empathy-network': {
+    elements: ['expresses reassurance', 'affirms waiting'],
+    influence: 'If "it will reach you if you wait" becomes shared wisdom, people become less likely to check things themselves.',
+  },
+  'case': {
+    elements: ['checkable material', 'states its own limits'],
+    influence: "Even when checkable material appears, it can pass by unused if it doesn't connect to what the group is currently focused on.",
+  },
+  'constructive': {
+    elements: ['says thank you', 'states its own limits', 'verifies it independently'],
+    influence: 'When a verification process is shared openly, judgment moves closer to something no one has to hand over to someone else.',
+  },
+  'core-reframe': {
+    elements: ['widens the frame of the discussion', 'rejects side-by-side comparison', 'references anxiety'],
+    influence: 'Widening the yardstick itself can leave the original, concrete question unanswered and harder to address.',
+  },
+  'core-opinion': {
+    elements: ['prefaces with "just my opinion"', 'shifts to the other person\'s intent', 'shifts to whether it is fair'],
+    influence: 'When the conversation moves from content to the speaker\'s posture, attention to the thing actually being checked can fade.',
+  },
+  'technical-turn': {
+    elements: ['shifts to a different topic', 'shares a procedure'],
+    influence: 'If an unanswered question is left behind for a different topic, it may never come back.',
+  },
+  'holder-reset': {
+    elements: ['states its purpose', 'states its own limits', 'leaves room for correction'],
+    influence: 'When purpose and limits are both stated, room remains for others to take part in verifying it.',
+  },
+  'pressure-holder-critique': {
+    elements: ['acknowledges good intent', 'rejects the reasoning itself', 'questions the right to speak'],
+    influence: 'When a flat right-or-wrong verdict comes back instead of a suggestion for improvement, it can push toward the statement being withdrawn rather than refined.',
+  },
+  'empathy-holder-critique': {
+    elements: ['praises the critical side', 'demands caution'],
+    influence: 'If empathy consistently sides with criticism, staying quiet can start to look safer than improving the material.',
+  },
+  'simulator': {
+    elements: ['a tool that helps judgment', 'built to withhold conclusions'],
+    influence: 'More tools for checking assumptions oneself make it easier to move past simply accepting a conclusion.',
+  },
+  'holder-reply': {
+    elements: ['acknowledges receiving it', 'relates it to their own situation'],
+    influence: "When a shared resource connects to someone's own judgment, it stays in the room as a record that it was actually used.",
+  },
+  'pressure-reversal': {
+    elements: ['demands something of the proposer', 'individualizes responsibility'],
+    influence: "When a proposer's own conduct is questioned rather than the substance of the proposal, fewer people may raise questions next time.",
+  },
+  'pressure-boundary': {
+    elements: ['dismisses outside opinion', 'prioritizes the inside'],
+    influence: 'Treating outside discussion as fragments can make ways of checking things outside the room go unused.',
+  },
+  'guide-2': {
+    elements: ['emphasizes being an in-group', 'draws a line between inside and outside'],
+    influence: 'Framing the room as "a place for people who know the field" can make outside dissent harder to bring in.',
+  },
+  'c01-ask': {
+    elements: ['asks for the original source', 'proposes putting things side by side'],
+    influence: 'The moment a request for confirmation appears, the group has not yet diverged. What happens next depends on whether anyone receives it.',
+  },
+  'c03-digest': {
+    elements: ['a scheduled digest', 'a disclaimer to verify yourself'],
+    influence: 'Reactions piling onto a digest by itself do not prove its content is accurate. This is the stage where one more entry point has appeared.',
+  },
+  'c05-note': {
+    elements: ['offers comparable material', 'states its own gaps'],
+    influence: 'Checkable material has appeared without reaction following it. Reaction volume and usefulness are moving independently.',
+  },
+  'c06-pass': {
+    elements: ['reads the easier one first', 'no one names the imbalance'],
+    influence: 'A skew has appeared but no one treats it as an issue yet. At this stage it could still tip either way.',
+  },
+  'c08-defer': {
+    elements: ['apologizes', 'puts it off'],
+    influence: 'This is a deferral, not a refusal. Whether the postponed point comes back determines whether this room can compare things at all.',
+  },
+  'c10-branch': {
+    elements: ['reduces the burden', 'proposes consolidating the role into one person'],
+    influence: 'The proposal itself is well-meant and realistic. What diverges is not whether it is good or bad, but how the room responds from here.',
+  },
+  'o01-both': {
+    elements: ['accepts the digest', 'keeps the original source too', 'names the added effort'],
+    influence: 'When both the digest and the original source remain, the ability to double-check things later stays intact.',
+  },
+  'o03-template': {
+    elements: ['a field for where it came from', 'a field for when it was checked', 'a field for what is still unverified'],
+    influence: 'A format that lets the unknown stay marked unknown makes it harder for low-confidence information to pass as settled fact.',
+  },
+  'o06-return': {
+    elements: ['brings back a deferred point', 'addresses it here and now'],
+    influence: 'When a deferred point returns to the same room, the ability to compare dissent stays intact.',
+  },
+  'o07-counter': {
+    elements: ['supporting material', 'conflicting material', 'leaves the conclusion open'],
+    influence: 'When conflicting material is placed alongside supporting material, the judgment stays with each person rather than the room.',
+  },
+  'o11-split': {
+    elements: ['names the reaction volume', 'separates it from the soundness of the content'],
+    influence: 'When reaction volume and validity are treated as separate things, who said it matters less for how something is handled.',
+  },
+  'o13-rotate': {
+    elements: ['rotates the role', 'spreads the burden'],
+    influence: "When the entry point isn't fixed on one person, information is less likely to stall when that person is unavailable.",
+  },
+};
+
 /** 個別の記述がないものは、効いている基準と向きから組み立てる。 */
-const GENERIC: Record<CriterionId, Record<CriterionState, PointAnatomy>> = {
+const GENERIC_JA: Record<CriterionId, Record<CriterionState, PointAnatomy>> = {
   evidence: {
     unmet: { elements: ['結論だけを出す', 'もとの資料を出さない'], influence: '根拠が示されないまま結論だけが残ると、後から確かめ直せなくなる場合があります。' },
     partial: { elements: ['材料を出す'], influence: '材料は出ていますが、確認の動きにつながるかはこの後の応答によります。' },
@@ -174,11 +306,36 @@ const GENERIC: Record<CriterionId, Record<CriterionState, PointAnatomy>> = {
   },
 };
 
-export function anatomyOf(message: Message | undefined, shift: CriterionShift | undefined): PointAnatomy | null {
+const GENERIC_EN: Record<CriterionId, Record<CriterionState, PointAnatomy>> = {
+  evidence: {
+    unmet: { elements: ['states only the conclusion', 'never produces the source'], influence: 'When a conclusion stands without its source ever appearing, it can become impossible to double-check later.' },
+    partial: { elements: ['offers material'], influence: 'Material has appeared; whether it leads to any actual checking depends on what happens next.' },
+    met: { elements: ['produces the original source', 'includes conflicting material too'], influence: 'When supporting and conflicting material both appear, judgment stays with each person.' },
+  },
+  content: {
+    unmet: { elements: ['names who said it', 'does not engage the content'], influence: 'When who said something decides how it is treated, the soundness of the content is less likely to be examined.' },
+    partial: { elements: ['a skew in reaction'], influence: 'A skew has appeared but has not yet been treated as an issue.' },
+    met: { elements: ['names the reaction volume', 'treats it separately from content'], influence: 'When reaction volume and content quality are treated separately, the evaluation standard moves away from the speaker.' },
+  },
+  compare: {
+    unmet: { elements: ['reframes the dissent', 'blocks side-by-side comparison'], influence: "When dissent doesn't stay in the room, both sides can no longer be compared." },
+    partial: { elements: ['raises dissent'], influence: 'Dissent has appeared; whether it gets received depends on what happens next.' },
+    met: { elements: ['receives the dissent', 'places it in the same room'], influence: 'When dissent stays in the room, each person can compare it and judge for themselves.' },
+  },
+  routes: {
+    unmet: { elements: ['narrows the entry point to one', 'discourages looking outside'], influence: "When information's entry point narrows to one, anything that doesn't go through it may stop arriving." },
+    partial: { elements: ['adds an entry point'], influence: 'One more entry point has appeared. Whether others remain depends on what happens next.' },
+    met: { elements: ['keeps entry points side by side', 'avoids fixing it on one person'], influence: 'When multiple entry points remain, a way to check things survives even if one stops working.' },
+  },
+};
+
+export function anatomyOf(message: Message | undefined, shift: CriterionShift | undefined, lang: Lang = 'ja'): PointAnatomy | null {
   if (!message) return null;
-  const direct = TABLE[suffixOf(message.id)];
+  const table = lang === 'en' ? TABLE_EN : TABLE_JA;
+  const direct = table[suffixOf(message.id)];
   if (direct) return direct;
   const target = shift ?? shiftsFor(message)[0];
   if (!target) return null;
-  return GENERIC[target.id][target.state];
+  const generic = lang === 'en' ? GENERIC_EN : GENERIC_JA;
+  return generic[target.id][target.state];
 }

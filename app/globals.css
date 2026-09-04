@@ -412,3 +412,9 @@
 .hero-paper:hover{border-color:rgba(21,23,26,.4);background:#fff;transform:translateY(-1px)}
 .hero-paper i{font-style:normal;font-size:12px;opacity:.7}
 @media(max-width:800px){.hero-cta-row{flex-direction:column;align-items:stretch}.hero-paper{justify-content:center}}
+
+/* 言語切替 */
+.nav-right{display:flex;align-items:center;gap:12px}
+.lang-toggle{border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.7);padding:5px 12px;color:#3d4449;font-size:10px;font-weight:700;letter-spacing:.06em;cursor:pointer;transition:border-color .18s ease,background .18s ease}
+.lang-toggle:hover{border-color:rgba(13,123,85,.4);background:#fff}
+@media(max-width:800px){.nav-statement{display:none}}
