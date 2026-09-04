@@ -402,3 +402,10 @@
 .phrase-box li p{margin:0;color:#3f5449;font-size:11.5px;line-height:1.75}
 .paper-entry a{border-color:rgba(21,23,26,.22);background:rgba(255,255,255,.5)}
 .paper-entry b{color:#15171a}
+
+/* START の隣に同格で置く仮説論文リンク */
+.hero-cta-row{display:flex;align-items:stretch;gap:12px;flex-wrap:wrap}
+.hero-paper{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(21,23,26,.22);border-radius:999px;background:rgba(255,255,255,.5);padding:13px 26px;color:#2b3238;font-size:13px;font-weight:700;letter-spacing:.03em;text-decoration:none;transition:border-color .18s ease,background .18s ease,transform .18s ease}
+.hero-paper:hover{border-color:rgba(21,23,26,.4);background:#fff;transform:translateY(-1px)}
+.hero-paper i{font-style:normal;font-size:12px;opacity:.7}
+@media(max-width:800px){.hero-cta-row{flex-direction:column;align-items:stretch}.hero-paper{justify-content:center}}
