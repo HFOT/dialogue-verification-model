@@ -7,6 +7,7 @@ import { CRITERIA, STATE_MARK } from '../data/criteria';
 import {
   ANSWERS,
   CRITERION_SHORT,
+  PHRASE_EXAMPLES,
   SELF_DISCLAIMER,
   SELF_QUESTIONS,
   readSelf,
@@ -126,6 +127,20 @@ export default function SelfCheck() {
                     {result.unseen.map((id) => `「${CRITERION_SHORT[id]}」`).join('と')}
                     は「わからない」のままです。判断を保留すべき領域として残しておいてください。
                   </p>
+                </div>
+              )}
+              {(result.headline.includes('閉鎖') || result.headline.includes('中間')) && (
+                <div className="phrase-box">
+                  <b>試せる言い回し</b>
+                  <p className="phrase-note">シミュレーション上で開放側への効果が大きかった要素です。効果を証明するものではなく、試す材料として置いています。</p>
+                  <ul>
+                    {PHRASE_EXAMPLES.map((phrase) => (
+                      <li key={phrase.label}>
+                        <span className="phrase-label">{phrase.label}</span>
+                        <p>「{phrase.text}」</p>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               )}
               <div className="self-actions">

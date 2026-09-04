@@ -1,0 +1,237 @@
+{
+  "generatedBy": "scripts/simulate.mjs",
+  "seed": 20260904,
+  "parameters": {
+    "runs": 100000,
+    "rounds": 40,
+    "initialMembers": 12,
+    "startOpenness": 0.5,
+    "startConcentration": 0.3,
+    "event": {
+      "ask": 0.3,
+      "digest": 0.25,
+      "join": 0.15,
+      "leave": 0.15,
+      "proposal": 0.15
+    },
+    "answerWeight": {
+      "voice": 0.6,
+      "openness": 0.4
+    },
+    "step": {
+      "answered": 0.06,
+      "ignored": 0.06,
+      "digest": 0.04,
+      "digestWhenClosed": 0.03
+    },
+    "proposal": {
+      "toBoth": {
+        "concentration": -0.1,
+        "openness": 0.08
+      },
+      "toSingle": {
+        "concentration": 0.15,
+        "openness": -0.1
+      }
+    },
+    "newcomer": {
+      "discomfortAbove": 0.6,
+      "discomfortLeaveProb": 0.6
+    },
+    "exitVoiceBias": 0.7,
+    "classify": {
+      "closedConc": 0.6,
+      "closedOpen": 0.45,
+      "openConc": 0.45,
+      "openOpen": 0.55
+    }
+  },
+  "total": 100000,
+  "overall": {
+    "n": 100000,
+    "closed": 55808,
+    "open": 589,
+    "middle": 43603
+  },
+  "byProposal": {
+    "with": {
+      "n": 50000,
+      "closed": 31966,
+      "open": 488,
+      "middle": 17546
+    },
+    "without": {
+      "n": 50000,
+      "closed": 23842,
+      "open": 101,
+      "middle": 26057
+    }
+  },
+  "byPreRecovery": [
+    {
+      "label": "0–20%",
+      "n": 9225,
+      "closedRate": 0.8757723577235772,
+      "openRate": 0,
+      "middleRate": 0.12422764227642276
+    },
+    {
+      "label": "20–40%",
+      "n": 3975,
+      "closedRate": 0.8877987421383647,
+      "openRate": 0.00025157232704402514,
+      "middleRate": 0.1119496855345912
+    },
+    {
+      "label": "40–60%",
+      "n": 6608,
+      "closedRate": 0.6654055690072639,
+      "openRate": 0.0036319612590799033,
+      "middleRate": 0.3309624697336562
+    },
+    {
+      "label": "60–80%",
+      "n": 4100,
+      "closedRate": 0.2997560975609756,
+      "openRate": 0.03,
+      "middleRate": 0.6702439024390244
+    },
+    {
+      "label": "80–100%",
+      "n": 9404,
+      "closedRate": 0.3245427477669077,
+      "openRate": 0.036154827732879626,
+      "middleRate": 0.6393024245002127
+    }
+  ],
+  "newcomer": {
+    "totalJoins": 599856,
+    "discomfortExits": 76894,
+    "retentionHighConcentration": 0.8572513330065796,
+    "retentionLowConcentration": 0.9999183326799947
+  },
+  "voiceExits": {
+    "closed": 201581,
+    "open": 2039
+  },
+  "leverSweep": [
+    {
+      "levers": {
+        "keepSource": true,
+        "noFixedOwner": true,
+        "inviteReturn": false
+      },
+      "n": 12500,
+      "closedRate": 0,
+      "openRate": 0.99568
+    },
+    {
+      "levers": {
+        "keepSource": true,
+        "noFixedOwner": true,
+        "inviteReturn": true
+      },
+      "n": 12500,
+      "closedRate": 0,
+      "openRate": 0.99992
+    },
+    {
+      "levers": {
+        "keepSource": false,
+        "noFixedOwner": true,
+        "inviteReturn": true
+      },
+      "n": 12500,
+      "closedRate": 0.00008,
+      "openRate": 0.04224
+    },
+    {
+      "levers": {
+        "keepSource": true,
+        "noFixedOwner": false,
+        "inviteReturn": true
+      },
+      "n": 12500,
+      "closedRate": 0.00024,
+      "openRate": 0.00016
+    },
+    {
+      "levers": {
+        "keepSource": true,
+        "noFixedOwner": false,
+        "inviteReturn": false
+      },
+      "n": 12500,
+      "closedRate": 0.0404,
+      "openRate": 0
+    },
+    {
+      "levers": {
+        "keepSource": false,
+        "noFixedOwner": true,
+        "inviteReturn": false
+      },
+      "n": 12500,
+      "closedRate": 0.16176,
+      "openRate": 0.0036
+    },
+    {
+      "levers": {
+        "keepSource": false,
+        "noFixedOwner": false,
+        "inviteReturn": true
+      },
+      "n": 12500,
+      "closedRate": 0.6136,
+      "openRate": 0
+    },
+    {
+      "levers": {
+        "keepSource": false,
+        "noFixedOwner": false,
+        "inviteReturn": false
+      },
+      "n": 12500,
+      "closedRate": 0.99936,
+      "openRate": 0
+    }
+  ],
+  "shockSweep": [
+    {
+      "kind": "none",
+      "n": 25000,
+      "closedRate": 0.019,
+      "openRate": 0.08172,
+      "middleRate": 0.89928,
+      "meanRoundsToClose": 54.72,
+      "rounds": 60
+    },
+    {
+      "kind": "funding",
+      "n": 25000,
+      "closedRate": 0.72368,
+      "openRate": 0,
+      "middleRate": 0.27632,
+      "meanRoundsToClose": 25.958821578598275,
+      "rounds": 60
+    },
+    {
+      "kind": "influence",
+      "n": 25000,
+      "closedRate": 0.4034,
+      "openRate": 0.00272,
+      "middleRate": 0.59388,
+      "meanRoundsToClose": 50.995637084779375,
+      "rounds": 60
+    },
+    {
+      "kind": "power",
+      "n": 25000,
+      "closedRate": 0.85396,
+      "openRate": 0,
+      "middleRate": 0.14604,
+      "meanRoundsToClose": 24.626493044170687,
+      "rounds": 60
+    }
+  ]
+}

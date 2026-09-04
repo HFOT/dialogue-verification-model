@@ -117,3 +117,30 @@ export function selfResult(reading: Record<CriterionId, SelfReading>): SelfResul
 
 export const SELF_DISCLAIMER =
   'これは診断ではありません。あなたが今その場をどう見ているかの記録です。回答はこのブラウザの中だけで処理され、どこにも送信されません。同じ場でも、立場が違えば違う結果になります。';
+
+/**
+ * 試せる言い回しの例。
+ * 架空の会話データ（open-run.ts）に実際に書かれている3つの文で、
+ * シミュレーション（scripts/simulate.mjs のレバー掃引）でも開放側への効果が大きかった要素に対応する。
+ * ただし効果量はそのシミュレーションの著者が置いたパラメータ上のものであり、
+ * この言い回し自体の効果を実証したものではない。断定ではなく、試す材料として示す。
+ */
+export type PhraseExample = { label: string; text: string; source: string };
+
+export const PHRASE_EXAMPLES: PhraseExample[] = [
+  {
+    label: '元の資料も残す',
+    text: 'まとめは助かります。ただ、まとめだけになると後から確かめられないので、元の資料へのリンクも一緒に置きませんか。',
+    source: 'app/data/open-run.ts',
+  },
+  {
+    label: '固定の担当者を置かない',
+    text: 'まとめ役は固定しないで持ち回りにしませんか。特定の一人を通さないと情報が届かない形は、その人の負担も大きいので。',
+    source: 'app/data/open-run.ts',
+  },
+  {
+    label: '保留にした話を戻す',
+    text: 'さっき保留になった話、ここで戻していいですか。',
+    source: 'app/data/open-run.ts',
+  },
+];
