@@ -112,3 +112,24 @@ export function tallyOf(messages: Message[]): Record<CriterionId, CriterionTally
   }
   return tally;
 }
+
+/** 一覧で使う短い名前。質問文のままだと読み解く手間がかかる。 */
+export const CRITERION_NAME: Record<CriterionId, string> = {
+  evidence: '根拠と反証',
+  content: '内容での評価',
+  compare: '異論の比較',
+  routes: '情報の経路',
+};
+
+/** 「未充足」ではなく、開いているか閉じているかで言う。 */
+export const STATE_PLAIN: Record<CriterionState, string> = {
+  unmet: '閉じ気味',
+  partial: 'どちらとも',
+  met: '開いている',
+};
+
+/** その基準が、いまこの会話でどうなっているか。観測が無ければそう言う。 */
+export function stateTextFor(id: CriterionId, state: CriterionState, observed: number): string {
+  if (observed === 0) return 'この会話ではまだ動きがありません。';
+  return CRITERION_EFFECT[id][state];
+}

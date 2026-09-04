@@ -175,3 +175,12 @@
 .crit-tag.met{border-color:rgba(13,123,85,.4);background:rgba(233,245,232,.85);color:var(--green)}
 .point-effect-body{margin:0;color:#2f3a34;font-size:12px;line-height:1.75}
 .criteria-live .crit em b{margin-left:6px;padding:1px 6px;border-radius:999px;background:rgba(29,47,37,.07);color:#5b6167;font-size:9px;font-weight:700}
+
+/* 4基準の行：短い名前＋いまどうなっているかの一文 */
+.criteria-live .crit{grid-template-columns:20px minmax(0,1fr);align-items:start;row-gap:5px;padding:10px}
+.criteria-live .crit i{padding-top:1px}
+.crit-main{display:flex;align-items:baseline;gap:7px;min-width:0}
+.crit-name{flex:1;min-width:0;color:#252c31;font-size:12px;font-weight:650;line-height:1.35}
+.criteria-live .crit em{flex:0 0 auto}
+.criteria-live .crit .crit-main b{flex:0 0 auto;margin-left:0;padding:1px 6px;border-radius:999px;background:rgba(29,47,37,.07);color:#5b6167;font-size:9px;font-weight:700}
+.crit-desc{grid-column:2;margin:0;color:#5b6167;font-size:11px;line-height:1.65}
