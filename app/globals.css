@@ -259,3 +259,59 @@
   .experience.is-active .exp-back{display:inline-block;margin-bottom:8px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.8);padding:7px 14px;color:#3d4449;font-size:11px;cursor:pointer}
   .experience.is-active .exp-back:hover{border-color:rgba(13,123,85,.4)}
 }
+
+/* スタート画面：分岐図 */
+.branch-figure{margin:0 0 26px;padding:0}
+.branch-figure svg{display:block;width:100%;max-width:320px;height:auto;overflow:visible}
+.bf-line{fill:none;stroke:rgba(13,123,85,.34);stroke-width:1.4;stroke-dasharray:4 5;animation:bf-flow 9s linear infinite}
+.bf-node{stroke-width:1.6}
+.bf-mid{fill:rgba(255,255,255,.9);stroke:var(--green)}
+.bf-close{fill:#eceeed;stroke:#9aa0a6}
+.bf-open{fill:#e7f4e9;stroke:var(--green)}
+.bf-label{fill:#1f2d25;font-size:12px;font-weight:650}
+.bf-sub{fill:#79837c;font-size:9.5px}
+.branch-figure figcaption{margin-top:10px;color:#6c7078;font-size:10.5px;line-height:1.65}
+@keyframes bf-flow{to{stroke-dashoffset:-90}}
+@media(prefers-reduced-motion:reduce){.bf-line{animation:none}}
+
+/* スタート画面の構図を締める */
+@media(min-width:801px){
+  .site-shell .hero{align-items:center;grid-template-columns:1.25fr .75fr;gap:56px}
+  .site-shell .hero h1{font-size:clamp(40px,4.8vw,68px);line-height:1.06;letter-spacing:-.07em}
+  .site-shell .lead{max-width:560px;margin-top:22px;font-size:15px}
+  .site-shell .hero-aside{align-self:center;padding-top:0;border-top:0}
+  .site-shell .hero-aside>p{margin-top:0}
+  .site-shell .hero-start{margin-top:32px;padding:15px 32px;font-size:14px}
+}
+.hero-aside>p{border-top:1px solid var(--ink);padding-top:18px}
+@media(max-width:800px){
+  .branch-figure{margin-bottom:20px}
+  .branch-figure svg{max-width:280px}
+}
+
+/* 見出しのハイライト：このサイトの主題そのもの */
+.hero h1 .hl{background-image:linear-gradient(transparent 62%,rgba(13,123,85,.2) 62%);background-repeat:no-repeat;background-size:0 100%;animation:hl-in .9s cubic-bezier(.2,.8,.2,1) .35s forwards}
+.hero h1 .hl+*{}
+@keyframes hl-in{to{background-size:100% 100%}}
+@media(prefers-reduced-motion:reduce){.hero h1 .hl{background-size:100% 100%;animation:none}}
+.branch-figure svg{max-width:340px}
+
+/* 会話ビューは START のときだけ。スクロールで別サイズの同じものが出ないようにする */
+.site-shell .experience:not(.is-active){display:none}
+
+/* 参考資料の第2ブロック */
+.theory-sub{margin:34px 0 0;color:#202529;font-size:17px;font-weight:600;letter-spacing:-.02em}
+.theory-sub-note{max-width:680px;margin:9px 0 0;color:#626a70;font-size:12px;line-height:1.75}
+.theory-grid .theory-card{display:block;min-height:137px;padding:16px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.4)}
+.theory-grid .theory-card b{display:block;color:#174c38;font-size:13px}
+.theory-grid .theory-card span{display:block;margin-top:8px;color:#616a6a;font-size:11px;line-height:1.6}
+.theory-grid .theory-card small{display:block;margin-top:12px;color:#7d8a84;font-size:9px;font-weight:700}
+@media(max-width:800px){.theory-sub{margin-top:26px}}
+
+/* 基準の根拠 */
+.basis-list{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px}
+.basis-list li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;align-items:start;border-top:1px solid var(--line);padding-top:12px}
+.basis-list li:first-child{border-top:0;padding-top:0}
+.basis-name{color:#174c38;font-size:13px;font-weight:650;line-height:1.5}
+.basis-list p{margin:0;color:#5b6167;font-size:11.5px;line-height:1.85}
+@media(max-width:800px){.basis-list li{grid-template-columns:1fr;gap:5px}}
