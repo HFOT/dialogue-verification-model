@@ -48,6 +48,10 @@
 
 自由記述は受け取りません。組織名も個人名も入力させません。回答はブラウザの中だけで処理され、送信も保存もされません。
 
+## 公開先
+
+https://hfot.github.io/dialogue-verification-model/
+
 ## 起動
 
 ```bash
@@ -56,6 +60,26 @@ npm run dev
 ```
 
 `http://localhost:3001/` で開きます。
+
+## デプロイ（GitHub Pages）
+
+vinext は `output: 'export'` に対応していないため、本番サーバーを立てて2ページをスナップショットし、`gh-pages` ブランチへ載せています。
+
+```bash
+npm run build:pages
+npx vinext start --port 4599
+```
+
+別のシェルで以下を実行し、`_next` と2つの HTML を集めて `gh-pages` に push します。
+
+```bash
+curl -sf http://localhost:4599/dialogue-verification-model/ -o index.html
+curl -sf http://localhost:4599/dialogue-verification-model/self -o self/index.html
+```
+
+`build:pages` は `PAGES_BASE_PATH` を付けてビルドします。通常の `npm run build` と `npm run dev` はルート配信のままで、影響を受けません。
+
+スナップショットを取る前に、**古いサーバーが残っていないか必ず確認してください。** 残っていると旧ビルドの HTML を拾い、参照するチャンクのハッシュがずれて 404 になります。
 
 ## 参考文献
 
